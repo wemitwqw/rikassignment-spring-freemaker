@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -20,9 +20,23 @@ public class Index {
     public String HomePage(Model model){
         Iterable<Event> events = eventRepository.findAll();
         model.addAttribute("events", events);
-//        model.put("events", events);
-        System.out.println(events);
         return "index";
+    }
+
+    @GetMapping("/event")
+    public String EventPage(Model model){
+        return "event";
+    }
+
+    @GetMapping("/event/{id}")
+    public String EventEditPage(@PathVariable Event event, Model model){
+        model.addAttribute("event", event);
+        return "event";
+    }
+
+    @PostMapping("/event/add")
+    public String EventAdd(Model model){
+        return "event";
     }
 }
 
