@@ -1,19 +1,14 @@
 package com.vp.rikassignment.model;
 
-//import org.springframework.data.annotation.Id;
-//import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,7 +25,8 @@ public class Event {
     private String date;
     @NotBlank
     private String time;
-
+    @ElementCollection
+    private List<Integer> attendees;
 }
 
 

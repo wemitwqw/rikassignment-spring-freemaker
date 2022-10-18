@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 
 @Controller
 public class Index {
@@ -24,12 +26,13 @@ public class Index {
     }
 
     @GetMapping("/event")
-    public String EventPage(Model model){
+    public String EventPage(){
         return "event";
     }
 
     @GetMapping("/event/{id}")
     public String EventEditPage(@PathVariable Event event, Model model){
+//        Optional<Event> event = eventRepository.findById(id);
         model.addAttribute("event", event);
         return "event";
     }
