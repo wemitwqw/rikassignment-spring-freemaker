@@ -7,7 +7,7 @@
                 <input type="text" value="${event.id}" name="name"><br>
                 <input type="text" value="${event.name}" name="name"><br>
                 <input type="text" value="${event.date}" name="name"><br>
-                <input type="text" value="${event.time}" name="name">
+                <input type="text" value="${event.time}" name="name"><br>
 <#--                <input type="text" value="${_csrf.token}" name="_csrf">-->
                 <button type="submit">Salvesta</button>
             </form>

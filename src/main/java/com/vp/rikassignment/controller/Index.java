@@ -32,8 +32,6 @@ public class Index {
 
     @GetMapping("/event/{eventID}")
     public String EventEditPage(@PathVariable String eventID, Model model){
-//        Optional<Event> event = eventRepository.findById(id);
-//        eventID = Integer.parseInt(eventID);
         Event event = eventRepository.findById(eventID).get();
         model.addAttribute("event", event);
         return "event";
