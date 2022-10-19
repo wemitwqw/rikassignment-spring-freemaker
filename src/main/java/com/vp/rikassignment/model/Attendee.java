@@ -5,9 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -16,19 +19,21 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class Attendee {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
     private String businessName;
     private String firstName;
     private String lastName;
     @NotBlank
     private String code;
-    @NotBlank
+//    @NotNull
     @Enumerated(EnumType.STRING)
     private Payment payment;
-    @NotBlank
+//    @NotNull
     @JsonProperty
     private boolean isPerson;
+    private String description;
 }
 
 

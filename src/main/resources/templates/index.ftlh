@@ -24,20 +24,14 @@
                 </div>
                 <div class="row">
                     <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Üritus</th>
-                            <th scope="col">Kuupäev</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <#list events as event>
                             <tr>
                                 <th>${event?index+1}.</th>
                                 <td>${event.name}</td>
                                 <td>${event.date}</td>
-                                <td><a href="/event/${event.id}">Osalejad</a></td>
+                                <td><a class="no-decorator" href="/event/${event.id}">OSAVÕTJAD</a></td>
+                                <td><a class="no-decorator" href="/event/del/${event.id}"><img src="/remove.svg" alt="delete button" width="20%" height="auto"></a></td>
                             </tr>
                         </#list>
 
@@ -46,7 +40,7 @@
                 </div>
             </div>
             <div class="col">
-                Column
+                Col
             </div>
         </div>
     </div>

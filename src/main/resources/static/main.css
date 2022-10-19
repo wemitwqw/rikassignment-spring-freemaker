@@ -1,3 +1,13 @@
 .cover {
     object-fit: cover;
 }
+
+.no-decorator{
+    text-decoration: none;
+    color: #808080;
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
