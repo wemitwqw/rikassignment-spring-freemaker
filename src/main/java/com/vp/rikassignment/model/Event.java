@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -17,16 +18,20 @@ import java.util.List;
 @Entity
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
     @NotBlank
     private String name;
     @NotBlank
+    private String place;
+    @NotBlank
     private String date;
     @NotBlank
     private String time;
+    //    @ElementCollection
+    private String description;
     @Getter
-//    @ElementCollection
     @OneToMany
     private List<Attendee> attendees;
 }

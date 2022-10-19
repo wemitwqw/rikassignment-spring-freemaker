@@ -18,8 +18,14 @@ public class Attendee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String id;
+    private String businessName;
+    private String firstName;
+    private String lastName;
     @NotBlank
-    private String name;
+    private String code;
+    @NotBlank
+    @Enumerated(EnumType.STRING)
+    private Payment payment;
     @NotBlank
     @JsonProperty
     private boolean isPerson;

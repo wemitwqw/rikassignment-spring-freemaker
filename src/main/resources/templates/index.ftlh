@@ -37,9 +37,10 @@
                                 <th>${event?index+1}.</th>
                                 <td>${event.name}</td>
                                 <td>${event.date}</td>
-                                <td><a href="/event/${event.id}">Muuda</a></td>
+                                <td><a href="/event/${event.id}">Osalejad</a></td>
                             </tr>
                         </#list>
+
                         </tbody>
                     </table>
                 </div>
