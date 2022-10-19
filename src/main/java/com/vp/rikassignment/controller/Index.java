@@ -30,14 +30,16 @@ public class Index {
         return "event";
     }
 
-    @GetMapping("/event/{id}")
-    public String EventEditPage(@PathVariable Event event, Model model){
+    @GetMapping("/event/{eventID}")
+    public String EventEditPage(@PathVariable String eventID, Model model){
 //        Optional<Event> event = eventRepository.findById(id);
+//        eventID = Integer.parseInt(eventID);
+        Event event = eventRepository.findById(eventID).get();
         model.addAttribute("event", event);
         return "event";
     }
 
-    @PostMapping("/event/add")
+    @PostMapping("event/add")
     public String EventAdd(Model model){
         return "event";
     }
