@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.*;
 
 
@@ -64,8 +63,8 @@ public class Index {
     }
 
     @GetMapping("/event/del/{eventID}")
-    public String EventDelete(@PathVariable String eventID, Model model){
-        Event event = eventRepository.getById(eventID);
+    public String EventDelete(@PathVariable String eventID){
+        Event event = eventRepository.findById(eventID).get();
         for (Attendee att : event.getAttendees()){
             attendeeRepository.deleteById(att.getId());
         }
@@ -73,7 +72,44 @@ public class Index {
         return "redirect:/";
     }
 
-    @PostMapping("attendee/add/{eventID}")
+    @GetMapping("/attendee/{attendeeID}")
+    public String Attendee(@PathVariable String attendeeID, Model model){
+        Attendee attendee = attendeeRepository.findById(attendeeID).get();
+        model.addAttribute("attendee", attendee);
+        return "attendee";
+    }
+
+    @PostMapping("/attendee/{attendeeID}")
+    public String Attendee(
+            @PathVariable String attendeeID,
+            @RequestParam Optional<String> name,
+            @RequestParam Optional<String> firstname,
+            @RequestParam Optional<String> lastname,
+            @RequestParam String code,
+            @RequestParam String payment,
+            @RequestParam String desc
+    ) {
+        Attendee att = attendeeRepository.findById(attendeeID).get();
+        if (att.isPerson()) {
+            att.setFirstName(firstname.get());
+            att.setLastName(lastname.get());
+        } else {
+            att.setBusinessName(name.get());
+        }
+        att.setCode(code);
+        if(Objects.equals(payment, "Sularaha")){
+            att.setPayment(Payment.CASH);
+        } else {
+            att.setPayment(Payment.TRANSFER);
+        }
+        att.setDescription(desc);
+
+        attendeeRepository.save(att);
+
+        return "redirect:/attendee/"+attendeeID;
+    }
+
+    @PostMapping("/attendee/add/{eventID}")
     public String AddAttendee(
             @PathVariable String eventID,
             @RequestParam String selector,
@@ -83,7 +119,6 @@ public class Index {
             @RequestParam String code,
             @RequestParam String payment,
             @RequestParam String desc
-//            Event event
     ){
         Attendee attendee = new Attendee();
         if (Objects.equals(selector, "option1")){
@@ -108,15 +143,20 @@ public class Index {
         event.setAttendees(attendeesList);
         eventRepository.save(event);
 
-//        return "redirect:/event/";
-        return "redirect:/";
+        return "redirect:/event/"+eventID;
     }
 
-    @GetMapping("/attendee/del/{attendeeId}")
-    public String removeAttendee(@PathVariable String attendeeId){
-//        eventRepository.findById()
-        attendeeRepository.deleteById(attendeeId);
-        return "redirect:/";
+    @GetMapping("/attendee/del/{eventID}/{attendeeID}")
+    public String removeAttendeeFromEvent(
+            @PathVariable String eventID,
+            @PathVariable String attendeeID
+    ){
+        Attendee att = attendeeRepository.findById(attendeeID).get();
+        Event event = eventRepository.findById(eventID).get();
+        event.getAttendees().remove(att);
+        eventRepository.save(event);
+
+        return "redirect:/"+eventID;
     }
 
 }

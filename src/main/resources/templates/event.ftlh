@@ -20,7 +20,7 @@
                         <#if att.getBusinessName()??>${att.getBusinessName()}<#else>${att.getFirstName()} ${att.getLastName()}</#if>
                         ${att.getCode()}
                         <a class="no-decorator" href="/attendee/${att.getId()}">Vaata</a>
-                        <a class="no-decorator" href="/attendee/del/${att.getId()}">Kustuta</a>
+                        <a class="no-decorator" href="/attendee/del/${event.id}/${att.getId()}">Kustuta</a>
                         <br>
                     </#list>
                 </div>
