@@ -103,9 +103,7 @@ public class Index {
             att.setPayment(Payment.TRANSFER);
         }
         att.setDescription(desc);
-
         attendeeRepository.save(att);
-
         return "redirect:/attendee/"+attendeeID;
     }
 
@@ -160,23 +158,3 @@ public class Index {
     }
 
 }
-
-//        for (Attendee att : event.getAttendees()) {
-////            if (!(att.getBusinessName()==null)){
-////                System.out.println(att.getBusinessName());
-////            } else {
-////                System.out.println(att.getCode());
-////            };
-//            System.out.println(att.getId());
-//        }
-
-//        for (String key : form.keySet()) {
-//            System.out.println(key);
-//        }
-//        System.out.println(name);
-//        System.out.println(time);
-//       form.toString()
-
-//        for (Event event : events) {
-//            System.out.println(event.getDate());
-//        }

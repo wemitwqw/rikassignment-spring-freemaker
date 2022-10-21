@@ -9,8 +9,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -27,10 +25,8 @@ public class Attendee {
     private String lastName;
     @NotBlank
     private String code;
-//    @NotNull
     @Enumerated(EnumType.STRING)
     private Payment payment;
-//    @NotNull
     @JsonProperty
     private boolean isPerson;
     private String description;
