@@ -1,5 +1,11 @@
 @import 'fonts.css';
 
+body {
+    /* width: 1920px;
+    height: 1112px; */
+    background-color: #eff2f4!important;
+}
+
 ul, li {
     display: block;
     padding: 0;
@@ -9,15 +15,39 @@ ul, li {
 .nav-bar {
     width: 1180px;
     height: 82px;
+    background-color: #ffffff!important;
 
 }
 
+.logo {
+    margin-left: 33px;
+    margin-top: 25px; 
+    margin-bottom: 25px;
+}
+
+.symbol {
+    padding-right: 35px!important;
+    padding-left: 0px!important;
+    padding-top: 20px!important;
+}  
+
+.menu {
+    margin-left: 147px;
+    padding-left: 0px;
+    height: 82px;
+}
+
+.menu__item {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 35px; 
+    padding-bottom: 36px;
+}
+
 .menu__item a{
-    font-family: "Open Sans";
+    font-family: "Open Sans Bold";
     font-size: 12px;
     color: #424242;
-    font-family: "Open Sans";
-    font-size: 12px;
     font-weight: 700;
     font-style: normal;
     letter-spacing: normal;
@@ -25,5 +55,19 @@ ul, li {
     text-align: left;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;   
+    text-overflow:ellipsis;
+    overflow:hidden 
+}
+
+.menu__item__active {
+    background: #005aa1;
+    /* padding-top: 35px;
+    padding-left: 16px; */
 
 }
+
+.menu__item__active a{
+    color: #ffffff;
+}
+

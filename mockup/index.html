@@ -10,22 +10,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
 </head>
 <body>
-    <header class="nav-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-2">
-                    <img src="ui/logo.svg" alt="logo" class="logo" />
-                </div>
-                <div class="col-xl-3">
-                    <nav>
-                        <ul class="menu d-flex">
-                            <li class="menu__item"><a href="">Avaleht</a></li>
-                            <li class="menu__item"><a href="">Lisa üritust</a></li>
-                        </ul>
-                    </nav>
-                </div>
+    <div class="container">
+        <header class="nav-bar d-flex">
+            <div class="col-2">
+                <img src="ui/logo.svg" alt="logo" class="logo" />
             </div>
-        </div>
-    </header>
+            <div class="col-3">
+                <nav>
+                    <ul class="menu d-flex ms-auto">
+                        <li class="menu__item menu__item__active"><a href="">Avaleht</a></li>
+                        <li class="menu__item"><a href="">Lisa üritust</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-1 symbol ms-auto">
+                <img src="ui/symbol.svg" height="61px" width="61px" alt="symbol"/>
+            </div>
+        </header>
+    </div>
 </body>
 </html>
